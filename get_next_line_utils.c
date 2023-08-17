@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/17 09:00:20 by gfantoni          #+#    #+#             */
+/*   Updated: 2023/08/17 09:08:07 by gfantoni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*ft_new_pre_line(char	*pre_line)
 {
-	int	i;
-	int	j;
 	char	*str;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (pre_line[i] && pre_line[i] != '\n')
@@ -28,9 +40,9 @@ char	*ft_new_pre_line(char	*pre_line)
 
 char	*ft_get_line(char *pre_line)
 {
-	int	i;
 	char	*str;
-	
+	int		i;
+
 	i = 0;
 	while (pre_line[i] && pre_line[i] != '\n')
 		i++;
@@ -59,7 +71,7 @@ int	ft_strlen(char *str)
 	if (str == NULL)
 		return (0);
 	i = 0;
-	while(str[i])
+	while (str[i])
 		i++;
 	return (i);
 }
@@ -97,7 +109,7 @@ char	*ft_line_break(char *pre_line, char c)
 	int	i;
 
 	i = 0;
-	if(pre_line == NULL)
+	if (pre_line == NULL)
 		return (NULL);
 	while (pre_line[i] != '\0')
 	{
@@ -106,28 +118,4 @@ char	*ft_line_break(char *pre_line, char c)
 		i++;
 	}
 	return (NULL);
-}
-
-char	*ft_get_buff(int fd, char *pre_line)
-{
-	char	*buff;
-	int	bytes;
-
-	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buff)
-		return (NULL);
-	bytes = 1;
-	while (!ft_line_break(pre_line, '\n') && bytes != 0)
-	{
-		bytes = read(fd, buff, BUFFER_SIZE);
-		if (bytes == -1)
-		{
-			free(buff);
-			return (NULL);
-		}
-		buff[bytes] = '\0';
-		pre_line = ft_strjoin(pre_line, buff);
-	}
-	free(buff);
-	return (pre_line);
 }
