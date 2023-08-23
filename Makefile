@@ -1,6 +1,6 @@
 NAME = get_next_line.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 SOURCES = \
 	get_next_line.c \
@@ -11,7 +11,7 @@ OBJECTS = $(SOURCES:%.c=%.o)
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -D BUFFER_SIZE=58 -c $< -o $@
+	$(CC) $(CFLAGS) -D BUFFER_SIZE=10 -c $< -o $@
 
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $? 
