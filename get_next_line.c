@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:32:42 by gfantoni          #+#    #+#             */
-/*   Updated: 2023/08/23 11:26:31 by gfantoni         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:43:46 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*ft_move_start(char *start)
 {
 	char	*new_buff;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (start[i] && start[i] != '\n')
@@ -41,10 +41,9 @@ char	*ft_move_start(char *start)
 	return (new_buff);
 }
 
-
 char	*ft_readed_line(char *start)
 {
-	int	i;
+	int		i;
 	char	*line;
 
 	if (!start || ! start[0])
@@ -72,7 +71,7 @@ char	*ft_readed_line(char *start)
 char	*get_next_line(int fd)
 {
 	char		*tmp;
-	int		fd_read;
+	int			fd_read;
 	static char	*start_str;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)

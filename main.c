@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:00:29 by gfantoni          #+#    #+#             */
-/*   Updated: 2023/08/23 11:50:31 by gfantoni         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:40:00 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	int		i;
 	int		fd1;
 
-	fd1 = open("read_error.txt", O_RDONLY);
+	fd1 = open("melvin.txt", O_RDONLY);
 	i = 1;
 	while (i < 14)
 	{

@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:32:39 by gfantoni          #+#    #+#             */
-/*   Updated: 2023/08/23 11:26:56 by gfantoni         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:42:00 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!str)
@@ -47,8 +47,8 @@ char	*ft_strchr(char *s, int c)
 
 char	*ft_join(char *dest, char *s1, char *s2)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	while (s1 && s1[i])
@@ -70,7 +70,7 @@ char	*ft_strjoin(char *start, char *buff)
 {
 	char	*ptr;
 
-	if(!start)
+	if (!start)
 	{
 		start = (char *)malloc(1 * sizeof(char));
 		start[0] = '\0';
@@ -84,4 +84,3 @@ char	*ft_strjoin(char *start, char *buff)
 	free(start);
 	return (ptr);
 }
-
