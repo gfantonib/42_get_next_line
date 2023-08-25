@@ -73,6 +73,8 @@ char	*ft_strjoin(char *start, char *buff)
 	if (!start)
 	{
 		start = (char *)malloc(1 * sizeof(char));
+		if (!start)
+			return (NULL);
 		start[0] = '\0';
 	}
 	if (!start || !buff)

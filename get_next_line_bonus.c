@@ -72,7 +72,7 @@ char	*get_next_line(int fd)
 {
 	char		*tmp;
 	int			fd_read;
-	static char	*start_str[1024];
+	static char	*start_str[2048];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
