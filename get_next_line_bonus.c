@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:32:42 by gfantoni          #+#    #+#             */
-/*   Updated: 2023/08/23 13:43:46 by gfantoni         ###   ########.fr       */
+/*   Updated: 2023/08/26 18:10:36 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,31 +68,40 @@ char	*ft_readed_line(char *start)
 	return (line);
 }
 
-char	*get_next_line(int fd)
+char	*ft_get_line(int fd, char *tmp, char **start_str)
 {
-	char		*tmp;
 	int			fd_read;
-	static char	*start_str[2048];
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
 	fd_read = 1;
-	tmp = (char *)malloc(1 + BUFFER_SIZE * sizeof(char));
-	if (!tmp)
-		return (NULL);
-	while (!(ft_strchr(start_str[fd], '\n')) && fd_read != 0)
+	while (!(ft_strchr(*start_str, '\n')) && fd_read != 0)
 	{
 		fd_read = read(fd, tmp, BUFFER_SIZE);
 		if (fd_read == -1)
 		{
 			free(tmp);
+			free(*start_str);
+			*start_str = NULL;
 			return (NULL);
 		}
 		tmp[fd_read] = '\0';
-		start_str[fd] = ft_strjoin(start_str[fd], tmp);
+		*start_str = ft_strjoin(*start_str, tmp);
 	}
 	free(tmp);
-	tmp = ft_readed_line(start_str[fd]);
-	start_str[fd] = ft_move_start(start_str[fd]);
+	tmp = ft_readed_line(*start_str);
+	*start_str = ft_move_start(*start_str);
+	return (tmp);
+}
+
+char	*get_next_line(int fd)
+{
+	char		*tmp;
+	static char	*start_str[1024];
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	tmp = (char *)malloc(1 + BUFFER_SIZE * sizeof(char));
+	if (!tmp)
+		return (NULL);
+	tmp = ft_get_line(fd, tmp, &start_str[fd]);
 	return (tmp);
 }
