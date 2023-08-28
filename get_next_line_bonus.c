@@ -6,11 +6,11 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:32:42 by gfantoni          #+#    #+#             */
-/*   Updated: 2023/08/26 18:10:36 by gfantoni         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:46:38 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_move_start(char *start)
 {
